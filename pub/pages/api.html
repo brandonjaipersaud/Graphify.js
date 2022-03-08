@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>graphify.js</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Yellowtail&display=swap" rel="stylesheet">
+
+
+
+    <script defer type="text/javascript" src='../lib/graphify.js'></script>
+    <link rel="stylesheet" type="text/css" href="../lib/graphify.css">
+    <link rel="stylesheet" type="text/css" href="../landing.css">
+    <script defer type="text/javascript" src="../js/api.js"> </script>
+     
+ </head>
+
+ <body>
+    <header>
+        <h1>graphify.js</h1>
+        <h3>
+            A graph algorithm visualization and animation library
+        </h3>
+
+        <ul id="nav">
+            <li> <a href="../landing.html"> Overview </a></li>
+            <li> <a href="../pages/getting-started.html"> Getting Started </a></li>
+            <li> <a href="../pages/examples.html"> Examples </a></li>
+            <li> <a href="../pages/api.html"> API </a></li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h1 id="api">API</h1>
+
+        <section>
+
+        <h3>Objects</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Constructor Parameters</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Graph</td>
+                    <td>config:Object, <br> ctx:HTMLElement </td>
+                    <td>Represents the graph to be embedded in a webpage. config is an object that 
+                        contains customization options. It is outlined in the table below. ctx is an 
+                    HTMLElement like a div which will serve as a container for the graph. </td>
+                </tr>
+
+                <tr>
+                    <td>Vertex</td>
+                    <td>None</td>
+                    <td>A Vertex to be inserted into the Graph.</td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+
+    </section>
+
+    <section>
+
+        <h3>config</h3>
+
+        <p>These are options you can specify in the graph config object</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Default</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>directed</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>If true, the edges added to the graph will be directed.</td>
+                </tr>
+
+                <tr>
+                    <td>graphBuilder</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>If set to true the user can interactively create their own graph instead of having it programatically
+                        generated. If this option is set, do NOT add new vertices and edges to the graph since they will be generated 
+                        later when the user interacts with it. i.e. do not call graph.addVertex(v0) or graph.addEdge(v0, v1).
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>bfsSpeed</td>
+                    <td>medium</td>
+                    <td>'slow'|'medium'|'fast'</td>
+                    <td>Speed of the bfs algorithm animation.</td>
+                </tr>
+
+                <tr>
+                    <td>dfsSpeed</td>
+                    <td>medium</td>
+                    <td>'slow'|'medium'|'fast'</td>
+                    <td>Speed of the dfs algorithm animation.</td>
+                </tr>
+
+                <tr>
+                    <td>dijkstraSpeed</td>
+                    <td>medium</td>
+                    <td>'slow'|'medium'|'fast'</td>
+                    <td>Speed of the Dijkstra algorithm animation.</td>
+                </tr>
+
+                <tr>
+                    <td>autoGenerate</td>
+                    <td>false</td>
+                    <td>Boolean</td>
+                    <td>Indicates whether the vertices and edges should be automatically generated.</td>
+                </tr>
+
+                <tr>
+                    <td>numVertices</td>
+                    <td>4</td>
+                    <td>Positive Integer</td>
+                    <td>If autoGenerate is set to true, this indicates how many vertices should be generated.</td>
+                </tr>
+
+                <tr>
+                    <td>numEdges</td>
+                    <td>5</td>
+                    <td>Positive Integer</td>
+                    <td>If autoGenerate is set to true, this indicates how many edges should be generated.</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </section>
+
+    <section>
+
+        <h3>config.styles</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Default</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>dimensions</td>
+                    <td>[60, 300]</td>
+                    <td>Array</td>
+                    <td>dimensions[0] is the width of the graph container expressed as a percentage. If set to 100, it will take
+                        up the entire width of its container. dimensions[1] is the height of the graph container in pixels. 
+                    </td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+
+    </section>
+
+    <section>
+
+
+
+        <h3>Methods</h3>
+
+
+        <pre> <code> graph.addVertex(v0)
+  graph.addEdge(v0, v1)
+  graph.visualize()
+  graph.setDFSSpeed('fast')
+  graph.setBFSSpeed('fast')
+  graph.setDijkstraSpeed('fast')
+    </code> </pre>
+
+  <p>
+      Note that the animation speed of the algorithms can be manually set in either the Graph config object or 
+      by calling the appropriate method above once the Graph has been created. 
+  </p>
+
+</section>
+
+
+<section>
+    <h3>Animation Notes</h3>
+
+    <p> The meaning of the vertex labelling during the animation comes from the implementation of the algorithms in 
+        the CLRS textbook. Below, I have briefly outlined how the vertices are labelled for each algorithm.
+    </p>
+
+    <h4>BFS</h4>
+
+    <p>The vertices get labelled with their shortest distance from the starting vertex.
+        Q=[] represents the unexplored vertices that have been added to the BFS queue.
+    </p>
+
+    <h4>DFS</h4>
+
+    <p>Each vertex gets labelled with s/f where s denotes when the vertex was first visited and f denotes 
+        when the vertex has finished being explored. 
+    </p>
+
+    <h4>Dijkstra</h4>
+
+    <p>Each vertex is labelled with its Dijkstra score.
+    </p>
+
+</section>
+
+
+<section>
+    <h3>Why Can't Dijkstra's Algorithm be Used in Non-Interactive Mode?</h3>
+
+    <p> You might be wondering about the question above. Namely, Dijkstra's algorithm can only be run in the graph-builder/interactive 
+        mode. This is because it is difficult to place edge weights in the randomly generated graphs in non-interactive mode. Thus, the 
+        algorithms in non-interactive mode are limited to ones that don't use edge weights.
+    </p>
+
+
+</section>
+
+
+    </main>
+
+ </body>
+
+</html>

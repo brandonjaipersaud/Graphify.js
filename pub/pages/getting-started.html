@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>graphify.js</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Yellowtail&display=swap" rel="stylesheet">
+
+
+
+    <script defer type="text/javascript" src='../lib/graphify.js'></script>
+    <link rel="stylesheet" type="text/css" href="../lib/graphify.css">
+    <link rel="stylesheet" type="text/css" href="../landing.css">
+    <script defer type="text/javascript" src='../js/getting-started.js'></script>
+
+    
+     
+ </head>
+
+ <body>
+    <header>
+        <h1>graphify.js</h1>
+        <h3>
+            A graph algorithm visualization and animation library
+        </h3>
+
+        <ul id="nav">
+            <li> <a href="../landing.html"> Overview </a></li>
+            <li> <a href="../pages/getting-started.html"> Getting Started </a></li>
+            <li> <a href="../pages/examples.html"> Examples </a></li>
+            <li> <a href="../pages/api.html"> API </a></li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h2>Getting Started</h2>
+        
+        <section id="pageSetup">
+
+            <h3>Page Setup</h3>
+
+            <p>
+                To use graphify.js, you must first include it in your page. Assuming the library is stored within the lib/ directory, this can be done by 
+                inserting the following inside the head tag of your document:
+            </p>
+
+            <pre> <code> &lt;script defer type="text/javascript" src='lib/graphify.js'&gt;  &lt;/script&gt; </code> 
+
+  &lt;link rel="stylesheet" type="text/css" href="lib/graphify.css"&gt; 
+            </pre>
+            <p>
+                Note that this should be inserted before any scripts that depend on it.
+            </p>
+        </section>
+
+        <section id="usingLibrary">
+
+        <h3>Using the Library</h3>
+
+        <p>
+            First, start by creating a basic container to hold the graph canvas:
+        </p>
+
+        <pre> <code> &lt;div class='container'&gt; &lt;/div&gt; </code> 
+        </pre>
+
+        <p>
+            Then, within an external JavaScript file start by selecting the container:
+        </p>
+
+        <pre> <code> let ctx = document.getElementsByClassName("container")[0] </code> 
+        </pre>
+
+        <p>
+            Now, let's create a new graph and add some vertices and edges:
+        </p>
+
+        <pre> <code> let graph = new Graph({}, ctx)
+  let v0 = new Vertex()
+  let v1 = new Vertex()
+  let v2 = new Vertex() 
+  let v3 = new Vertex()
+
+  graph.addVertex(v0)
+  graph.addVertex(v1)
+  graph.addVertex(v2)
+  graph.addVertex(v3)
+
+  graph.addEdge(v0, v1)
+  graph.addEdge(v0, v2)
+  graph.addEdge(v1, v2)
+  graph.addEdge(v2, v3)
+            </code> 
+        </pre>
+
+        <p>
+            The first parameter to Graph is a config object which allows you to customize properties such as animation speed. For now we keep
+            it empty. Refer to the API to see all the customization options. The examples page also has examples of graphs that 
+            use these options. The second parameter to Graph is the graph context we selected earlier. 
+        </p>
+
+        <p>
+            Lastly, to display the graph call the graph.visualize() method as follows:
+        </p>
+
+        <pre> <code> graph.visualize() </code> 
+        </pre>
+
+        <p>This generates a graph based on the entered parameters. The vertex positions are randomly generated. The below graph is an example of 
+            what could be generated. If you refresh the page, the below graph will look different since the vertex positions will have changed. </p>
+
+        <div class='container'> </div>
+        
+        <p>
+        To run either BFS/DFS: click the corresponding button, choose a starting vertex, 
+        then click the execute algorithm button and enjoy the animation! This is a basic undirected 
+        graph with 4 vertices. Checkout the examples page for a slightly larger graph.
+       </p>
+
+    </section>
+
+    <section class="interactive"> 
+
+
+        <h3>Interactive Mode</h3>
+
+        <p>
+            This mode enables you to interactively create a directed graph with edge weights. It also
+            gives you the option of running Dijkstra's algorithm in addition to BFS and DFS. This cannot be
+            done with graphs created in the non-interactive mode.
+        </p>
+
+        <p>
+            Start by creating a new container like before:
+        </p>
+
+        <pre> <code> &lt;div class='container'&gt; &lt;/div&gt; </code> 
+        </pre>
+
+        <p>
+            Then, create a new graph and pass a config object to it. Note that we set graphBuilder to true
+            to turn on the interactive graph builder mode. We also set the styles.dimensions property which alters the 
+            dimensions of the graph container. Refer to the API to see in detail what these properties mean and how to configure
+            them.
+        </p>
+
+        <pre> <code> 
+            ctx = document.getElementsByClassName("container")[1]
+
+            let graph = new Graph({
+                graphBuilder: true,
+                 styles: {
+                    dimensions: [100, 400]
+                 }
+            }, ctx)
+
+            graph.visualize()
+                      </code> 
+        </pre>
+
+        <p>
+            This creates an interactive window below enabling you to create your graph. Follow the instructions
+            below to create the graph. First, you add vertices, then edges, then edge weights. When the graph is 
+            finished constructing, you can use it in the same way as the other graphs above to animate algorithms.
+        </p>
+
+
+        <div class='container'> </div>
+
+
+        <p>
+            Try running Dijkstra's algorithm when you have finished constructing the graph!
+        </p>
+
+    </section>
+
+  
+
+    </main>
+
+ </body>
+
+</html>
+
+<!-- 
+
+
+
+
+
+
+
+ -->

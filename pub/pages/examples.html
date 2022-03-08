@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>graphify.js</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Yellowtail&display=swap" rel="stylesheet">
+
+
+
+    <script defer type="text/javascript" src='../lib/graphify.js'></script>
+    <link rel="stylesheet" type="text/css" href="../lib/graphify.css">
+    <link rel="stylesheet" type="text/css" href="../landing.css">
+    <script defer type="text/javascript" src="../js/examples.js"> </script>
+     
+ </head>
+
+ <body>
+    <header>
+        <h1>graphify.js</h1>
+        <h3>
+            A graph algorithm visualization and animation library
+        </h3>
+
+        <ul id="nav">
+            <li> <a href="../landing.html"> Overview </a></li>
+            <li> <a href="../pages/getting-started.html"> Getting Started </a></li>
+            <li> <a href="../pages/examples.html"> Examples </a></li>
+            <li> <a href="../pages/api.html"> API </a></li>
+        </ul>
+    </header>
+
+    <main>
+
+        <h2>More Examples</h2>
+
+        <p>A slightly larger version of the simple graph given in the getting started page.
+            The DFS animation speed is set to fast.
+        </p>
+        <pre> <code> 
+    let ctx = document.getElementsByClassName("container")[0]
+    let graph = new Graph({
+        styles: {
+            dimensions: [100, 400]
+        }
+
+    }, ctx)
+
+    ... manually add vertices and edges to the graph ... 
+
+
+    graph.setDFSSpeed('fast')
+    graph.visualize()
+                    
+                              </code> 
+                          </pre>
+
+        <div class='container'> </div>
+
+        <p>This graph is similar to the above graph but the edges are now directed. Also, the container has more height than the containers 
+            in the previous examples.
+        </p>
+
+        <pre> <code> 
+        let ctx = document.getElementsByClassName("container")[1]
+        let graph = new Graph({
+            directed: true,
+            styles: {
+                dimensions: [100, 500]
+            }
+        }, ctx)
+    
+        ... manually add vertices and edges to the graph ... 
+    
+        
+        graph.setDFSSpeed('fast')
+        graph.visualize()
+                            
+                                      </code> 
+                                  </pre>
+
+        <div class='container'> </div>
+
+        <p> Construct your own graph using the graph builder mode. The animation speed of Dijkstra's algorithm in this graph 
+            will be set to slow.
+        </p>
+
+        <pre> <code> 
+        let config = {
+            graphBuilder: true,
+            styles: {
+                        dimensions: [100, 400]
+            }
+        
+        }
+        
+        let ctx = document.getElementsByClassName("container")[2]
+        let graph = new Graph(config, ctx)
+        graph.setDijkstraSpeed('slow')
+        
+        graph.visualize()
+                                
+                                          </code> 
+                                      </pre>
+
+
+
+        <div class='container'> </div>
+
+
+        <p> If you do not want to manually add vertices and edges to your graph, you can simply set the autoGenerate property to true 
+            and specify the number of vertices and edges that you want in the graph:
+        </p>
+
+        <pre> <code> 
+    ctx = document.getElementsByClassName("container")[3]
+    graph = new Graph({
+        autoGenerate: true,
+        styles: {
+            dimensions: [100, 500]
+        }
+    }, ctx) 
+            
+    graph.visualize()
+            
+                      </code> 
+                  </pre>
+
+        <p>Note that by default the number of vertices is set to 4 and the number of edges is set to 5. However, you
+            can manually specify the number of vertices and edges you want by setting the numVertices and numEdges properties.
+            Below is the generated graph:
+        </p>
+
+        <div class='container'> </div>
+
+
+
+        
+
+        
+
+
+     
+  
+
+    </main>
+
+ </body>
+
+</html>
